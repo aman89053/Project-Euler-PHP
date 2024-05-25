@@ -32,3 +32,46 @@ function evenFibSum($limit) {
 $limit = 4000000;
 echo evenFibSum($limit);
 ?>
+
+
+
+<?php
+/////  optimezed version of Function to return the sum of even Fibonacci numbers up to a given limit///
+function evenFibSum($limit) {
+    if ($limit < 2) {
+        return 0;
+    }
+
+    // Initialize the first two even Fibonacci numbers
+    $firstEvenFib = 0;
+    $secondEvenFib = 2;
+    $sum = $secondEvenFib; // Starting sum with the second even Fibonacci number
+
+    // Calculate the sum of even Fibonacci numbers up to the limit
+    while ($secondEvenFib <= $limit) {
+        // Get the next even Fibonacci number
+        $nextEvenFib = 4 * $secondEvenFib + $firstEvenFib;
+
+        // Break the loop if the next even Fibonacci number exceeds the limit
+        if ($nextEvenFib > $limit) {
+            break;
+        }
+
+        // Update the sum with the new even Fibonacci number
+        $sum += $nextEvenFib;
+
+        // Move to the next even Fibonacci numbers
+        $firstEvenFib = $secondEvenFib;
+        $secondEvenFib = $nextEvenFib;
+    }
+
+    return $sum;
+}
+
+// Define the limit
+$limit = 4000000;
+
+// Calculate and display the sum of even Fibonacci numbers up to the limit
+echo evenFibSum($limit);
+?>
+

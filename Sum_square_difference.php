@@ -22,4 +22,33 @@ $n = 100;
 $difference = sumSquareDifference($n);
 
 echo  $difference;
+
 ?>
+
+
+
+
+
+
+<?php
+// ////////////////////////////////optimezed code/////////////////////////////
+function sumSquareDifference($n) {
+    // formula: n(n + 1)(2n + 1) / 6
+    $sumOfSquares = ($n * ($n + 1) * (2 * $n + 1)) / 6;
+
+    //  formula: (n(n + 1) / 2)^2
+    $sum = ($n * ($n + 1)) / 2;
+    $squareOfSum = $sum * $sum;
+
+    $difference = $squareOfSum - $sumOfSquares;
+
+    return $difference;
+}
+
+// Difference for n = 100
+$n = 100;
+$difference = sumSquareDifference($n);
+
+echo $difference;
+?>
+
